@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infinigen-ssh
+  labels:
+    name: infinigen-ssh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: infinigen-ssh
+  template:
+    metadata:
+      labels:
+        name: infinigen-ssh
+    spec:
+      containers:
+      - name: infinigen-ssh
+        image: python:3.9-slim
+        command: ["/bin/sh", "-c", "apt update && apt install nano && sleep 999999"]
+        resources:
+          requests:
+            memory: "32Gi"
+            cpu: "8"
+          limits:
+            memory: "48Gi"
+            cpu: "10"
+        volumeMounts:
+        - mountPath: /mnt/infinigen_output/
+          name: infinigen-pvc
+      volumes:
+          - name: infinigen-pvc
+            persistentVolumeClaim:
+              claimName: infinigen-pvc

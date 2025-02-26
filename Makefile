@@ -17,7 +17,7 @@ flip_fluids:
 	bash scripts/install/compile_flip_fluids.sh
 
 DOCKER_BUILD_PROGRESS ?= auto
-DOCKER_TAG ?= infinigen_docker_img
+DOCKER_TAG ?= saadam1n/infinigen-generator:latest
 
 PWD = $(shell pwd)
 

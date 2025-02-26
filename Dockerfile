@@ -25,4 +25,4 @@ RUN conda init bash && \
     . ~/.bashrc && \
     conda create --name infinigen python=3.11 -y && \
     conda activate infinigen && \
-    pip install -e ".[dev]"
+    INFINIGEN_MINIMAL_INSTALL=True pip install -e .
